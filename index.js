@@ -1,8 +1,8 @@
 
 const form = document.querySelector('form');
 const amountfield = document.getElementById('amount')
-const emailfield = document.getElementById('phone_number')
-
+const emailfield = document.getElementById('email')
+const phoneNumberfield = document.getElementById('phone_number')
 
 
 
@@ -13,20 +13,23 @@ form.addEventListener('submit',function(e){
     e.preventDefault();
 
     
-    let phone_number= emailfield.value;
+    let phone_number= phoneNumberfield.value;
     let amount= amountfield.value;
+    let email= emailfield.value;
 
-    makePayment(amount,phone_number)
+    makePayment(amount,phone_number,email)
+
+    form.reset()
     
 })
 
-function makePayment(amount,phone_number) {
+function makePayment(amount,phone_number,email) {
     FlutterwaveCheckout({
       public_key: "FLWPUBK-692f1f62e20941cea3dd22aaf2dec9aa-X",
       tx_ref: "titanic-48981487343MDI0NzMx",
       amount: amount,
       currency: "UGX",
-      payment_options: "card, mobilemoneyuganda, banktransfer",
+      payment_options: "card, mobilemoneyuganda",
       callback: function(payment) {
         // Send AJAX verification request to backend
         verifyTransactionOnBackend(payment.id);
@@ -48,7 +51,7 @@ function makePayment(amount,phone_number) {
         consumer_mac: "92a3-912ba-1192a",
       },
       customer: {
-        email: "rose@unsinkableship.com",
+        email: email,
         phone_number: phone_number,
         name: "Rose DeWitt Bukater",
       },
