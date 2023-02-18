@@ -3,8 +3,7 @@ const form = document.querySelector('form');
 const amountfield = document.getElementById('amount')
 const emailfield = document.getElementById('email')
 const phoneNumberfield = document.getElementById('phone_number')
-
-
+const namefield = document.getElementById('name')
 
 const formData = new FormData(form);
 
@@ -16,14 +15,16 @@ form.addEventListener('submit',function(e){
     let phone_number= phoneNumberfield.value;
     let amount= amountfield.value;
     let email= emailfield.value;
+    let name = namefield.value;
 
-    makePayment(amount,phone_number,email)
+
+    makePayment(amount,phone_number,email,name)
 
     form.reset()
     
 })
 
-function makePayment(amount,phone_number,email) {
+function makePayment(amount,phone_number,email,name) {
     FlutterwaveCheckout({
       public_key: "FLWPUBK-692f1f62e20941cea3dd22aaf2dec9aa-X",
       tx_ref: "titanic-48981487343MDI0NzMx",
@@ -53,7 +54,7 @@ function makePayment(amount,phone_number,email) {
       customer: {
         email: email,
         phone_number: phone_number,
-        name: "Rose DeWitt Bukater",
+        name: name,
       },
       customizations: {
         title: "Heaven Harvesters Ministry",

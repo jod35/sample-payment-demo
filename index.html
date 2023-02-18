@@ -14,7 +14,10 @@
   <h1>Please Donate To the Ministry</h1>
   <br>
   <form>
-  
+    <div class="form-group">
+      <label for="amount">Your Name</label>
+      <input required type="text" name="name" id="name" class="form-control" placeholder="John Doe">
+    </div>
       <div class="form-group">
         <label for="amount">Amount (UGX)</label>
         <input required type="number" name="amount" id="amount" class="form-control" placeholder="3000">
@@ -28,6 +31,7 @@
         <label for="amount">Email (Optional)</label>
         <input required type="text" name="email" id="email" class="form-control" placeholder="johndoe@gmail.com">
       </div>
+      
     <button type="submit" class="start-payment-button btn btn-primary">Pay Now</button>
   </form>
 </div>
